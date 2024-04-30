@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 34
+    buildToolsVersion "25.0.2"
+    namespace = "com.moutamid.offlinemap"
+
+    defaultConfig {
+        applicationId "com.moutamid.offlinemap"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/LICENSE'
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+
+    implementation "com.google.android.gms:play-services-maps:18.2.0"
+
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'org.mapsforge:mapsforge-core:0.8.0'
+    implementation 'org.mapsforge:mapsforge-map:0.8.0'
+    implementation 'org.mapsforge:mapsforge-poi:0.8.0'
+    implementation 'org.mapsforge:mapsforge-poi-android:0.8.0'
+    implementation 'org.mapsforge:spatialite-android:0.8.0'
+    implementation 'org.mapsforge:spatialite-android:0.8.0:natives-armeabi'
+    implementation 'org.mapsforge:spatialite-android:0.8.0:natives-armeabi-v7a'
+    implementation 'org.mapsforge:spatialite-android:0.8.0:natives-x86'
+    implementation 'org.mapsforge:mapsforge-map-reader:0.8.0'
+    implementation 'org.mapsforge:mapsforge-map-android:0.8.0'
+    implementation 'org.mapsforge:mapsforge-themes:0.8.0'
+    implementation(group: 'com.graphhopper', name: 'graphhopper-core', version: '0.10-SNAPSHOT') {
+        exclude group: 'com.google.protobuf', module: 'protobuf-java'
+        exclude group: 'org.openstreetmap.osmosis', module: 'osmosis-osm-binary'
+        exclude group: 'org.apache.xmlgraphics', module: 'xmlgraphics-commons'
+    }
+    implementation 'net.sf.kxml:kxml2:2.3.0'
+    implementation 'com.caverock:androidsvg:1.2.2-beta-1'
+    implementation('org.mapsforge:mapsforge-map-android-extras:0.8.0') {
+        transitive = false
+    }
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.slf4j:slf4j-android:1.7.25'
+}
+
